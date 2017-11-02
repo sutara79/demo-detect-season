@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>現在の季節によって表示内容を変える</title>
+<style>
+#spring { background: pink; }
+#summer { background: blue; }
+#autumn { background: orange; }
+#winter { background: gray; }
+.season {
+  padding: 10px;
+  display: none; /* 四季を一括して非表示にしておく */
+}
+</style>
+</head>
+<body>
+今の季節は…
+<div id="spring" class="season">春</div>
+<div id="summer" class="season">夏</div>
+<div id="autumn" class="season">秋</div>
+<div id="winter" class="season">冬</div>
+
+<!-- JavaScript -->
+<script>
+// 現在の月を取得
+var date = new Date();
+var month = date.getMonth() + 1;
+
+// 現在の季節を判断
+var season;
+if (month < 3 || month == 12) {
+  // 12月〜2月
+  season = 'winter';
+} else if (month < 6) {
+  // 3月〜5月
+  season = 'spring';
+} else if (month < 9) {
+  // 6月〜8月
+  season = 'summer';
+} else {
+  // 9月〜11月
+  season = 'autumn';
+}
+// 現在の季節のdivを display: block; にして画面に表示
+document.getElementById(season).style.display = 'block';
+</script>
+</body>
+</html>
